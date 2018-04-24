@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <div class="card">
+    
+    <div class="card-body">
+      <h5 class="card-title">{{ user.name }}</h5>
+      <div class="card-text">
+          <ul>
+            <li>Compañia: <a href="">{{ user.company.name }} </a></li>
+            <li>Ciudad: <a href="">{{ user.address.city }}</a></li>
+            <li>Website: <a href="">{{ user.website }}</a></li>
+          </ul>  
+      </div>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+
+  <button [routerLink]="['']"
+    class="btn btn-outline-danger mt-3">Regresar</button>
+</div>

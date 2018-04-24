@@ -13,13 +13,15 @@ import { UsersService } from './services/users.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { DetalleComponent } from './components/detalle/detalle.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,

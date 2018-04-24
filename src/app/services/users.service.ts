@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 export class UsersService {
 
   users: any = [];
+  usuario: any;
 
   constructor(public http: HttpClient) {
 
@@ -23,6 +24,19 @@ export class UsersService {
               this.users = respuesta;
               return this.users;
             });
+   }
+
+
+   getUser( id: number) {
+
+    const url = `https://jsonplaceholder.typicode.com/users/${ id }`;
+
+    return this.http.get(url)
+              .map( respuesta => {
+                this.usuario = respuesta;
+                console.log(respuesta);
+                return this.usuario;
+              });
    }
 
 }

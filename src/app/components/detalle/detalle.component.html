@@ -2,18 +2,27 @@
   <div class="card">
     
     <div class="card-body">
-      <h5 class="card-title">{{ user.name }}</h5>
+      <h1 class="card-title">{{ user.name }}</h1>
       <div class="card-text">
           <ul>
             <li>Compañia: <a href="">{{ user.company.name }} </a></li>
             <li>Ciudad: <a href="">{{ user.address.city }}</a></li>
             <li>Website: <a href="">{{ user.website }}</a></li>
           </ul>  
+
+          <h5>Albums</h5>
+          <hr>
+
+          <ul>
+            <li *ngFor="let album of albums"> {{ album.title }} </li>
+          </ul>
+
       </div>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
 
-  <button [routerLink]="['']"
+  <button (click)="eraseAlbums()"
+    [routerLink]="['']"
     class="btn btn-outline-danger mt-3">Regresar</button>
 </div>

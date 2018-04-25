@@ -13,6 +13,10 @@ export class UsersService {
 
   albumPhotos: any = [];
 
+  userPosts: any = [];
+
+  postComments: any = [];
+
   constructor(public http: HttpClient) {
 
     console.log( ' Usuarios listos para cargarse ' );
@@ -25,6 +29,7 @@ export class UsersService {
     return this.http.get(url)
             .map( (respuesta: any) => {
               this.users = respuesta;
+              console.log(this.users);
               return this.users;
             });
    }
@@ -57,9 +62,7 @@ export class UsersService {
                     return this.userAlbums;
 
                   });
-
    }
-
 
    getPhotos( albumID: number ) {
      const url = `https://jsonplaceholder.typicode.com/photos/`;
@@ -77,4 +80,34 @@ export class UsersService {
                  });
    }
 
+   getPosts( userID: number) {
+    const url = `https://jsonplaceholder.typicode.com/posts/`;
+
+    return this.http.get(url)
+                .map( respuesta => {
+
+                  for (let post of respuesta ) {
+                    if (post.userId == userID ) {
+                      this.userPosts.push(post);
+                    }
+                  }
+
+                  return this.userPosts;
+                });
+   }
+
+   getComments( postID: number) {
+    const url = `https://jsonplaceholder.typicode.com/comments/`;
+
+    return this.http.get(url)
+                  .map( respuesta => {
+                    for (let comment of respuesta ) {
+                      if (comment.postId == postID ) {
+                        this.postComments.push(comment);
+                      }
+                    }
+                    return this.postComments;
+
+                  });
+   }
 }

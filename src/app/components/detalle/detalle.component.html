@@ -1,5 +1,33 @@
 <div class="container mt-5">
 
+   <!-- Slider -->
+   <div class="row">
+      <div class="col mb-3">
+        <div class="carousel-container" *ngIf="photos.length > 0">
+          <h4>Album photos</h4>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item" [ngClass]="{'active': i == 0 }" *ngFor="let photo of photos; let i = index">
+                <img class="d-block w-100" [src]="photo.thumbnailUrl" alt="photo.title">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{{ photo.title }}</h5>
+                  <p>{{ photo.url }}</p>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" data-target="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" data-target="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <div class="row">
     <div class="card col">
 
@@ -23,40 +51,42 @@
 
           <ul>
             <li *ngFor="let album of albums; let i = index">
-              <button (click)="verPhotos(i+1)" class="btn btn-block text-left">{{ album.title }}</button>
+              <button class="btn btn-block text-left">{{ album.title }}  <span class="btn btn-info" (click)="verPhotos(i+1)"> FOTOS </span></button>
             </li>
           </ul>
 
         </div>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <button (click)="verPosts( user.id )" class="btn btn-primary">Ver Posts</button>
       </div>
     </div>
   </div>
-  <!-- Slider -->
-  <div class="row">
-      <div class="col mt-3">
-        <div class="carousel-container" *ngIf="photos.length > 0">
-          <h4>Album photos</h4>
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item" [ngClass]="{'active': i == 0 }" *ngFor="let photo of photos; let i = index">
-                <img class="d-block w-100" [src]="photo.thumbnailUrl" alt="photo.title">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>{{ photo.title }}</h5>
-                  <p>{{ photo.url }}</p>
+
+    <div class="row">
+      <div class="col" *ngIf="posts.length > 0">
+        <h4>Posts del autor</h4>
+        <hr>
+        <ul>
+          <li *ngFor="let post of posts; let i = index"> 
+              <div class="card mb-2" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.body }}</p>
+                    <button class="btn btn-outline-primary btn-block" (click)="verComments( post.id )"> ver comentarios</button>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <a class="carousel-control-prev" data-target="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" data-target="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col" *ngIf="comments.length > 0">
+        <h4>Comentario del post {{ comments[i].postId }}</h4>
+        <hr>
+          <ul>
+              <li *ngFor="let comment of comments; let i = index"> 
+                <h5> {{ comment.email }} </h5> 
+                <p> {{ comment.body }} </p>
+              </li>
+            </ul>
       </div>
     </div>
 

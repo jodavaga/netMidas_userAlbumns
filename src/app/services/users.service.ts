@@ -42,6 +42,7 @@ export class UsersService {
     return this.http.get(url)
               .map( respuesta => {
                 this.usuario = respuesta;
+                console.log(respuesta);
                 return this.usuario;
               });
    }

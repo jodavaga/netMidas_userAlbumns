@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
 
    <!-- Slider -->
    <div class="row">
@@ -28,23 +28,40 @@
       </div>
     </div>
 
-  <div class="row">
+  <div class="row" *ngIf="user">
     <div class="card col">
 
       <div class="card-body">
-        <h1 class="card-title">{{ user.name }}</h1>
+        <h1 class="card-title">{{ user.name }} - <small> {{ user.username }}</small></h1>
         <div class="card-text">
-          <ul>
-            <li>Compañia:
-              <a href="">{{ user.company.name }} </a>
-            </li>
-            <li>Ciudad:
-              <a href="">{{ user.address.city }}</a>
-            </li>
-            <li>Website:
-              <a href="">{{ user.website }}</a>
-            </li>
-          </ul>
+            <form>
+                <div class="form-group row">
+                  <label class="col-2" for="email">Email</label>
+                  <input type="email" class="form-control col" id="email" placeholder="{{ user.email}}">
+                  
+                </div>
+                
+                <div class="form-group row">
+                  <label class="col-2" for="company">Compañia</label>
+                  <input type="text" class="form-control col" id="company" placeholder="{{ user.company.name }}">
+                  
+                </div>
+                <div class="form-group row">
+                  <label class="col-2" for="city">Ciudad</label>
+                  <input type="text" class="form-control col" id="city" placeholder="{{ user.address.city }}">
+                </div>
+                
+                <div class="form-group row">
+                  <label class="col-2" for="phone">Telefono</label>
+                  <input type="number" class="form-control col" id="phone" placeholder="{{ user.phone }}">
+                  
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-2" for="website">Website</label>
+                  <input type="text" class="form-control col" id="website" placeholder="{{ user.website }}">
+                </div>
+              </form>
 
           <h5>Albums</h5>
           <hr>
@@ -61,24 +78,24 @@
     </div>
   </div>
 
-    <div class="row">
-      <div class="col" *ngIf="posts.length > 0">
+    <div class="row mt-3">
+      <div class="col-8" *ngIf="posts.length > 0">
         <h4>Posts del autor</h4>
         <hr>
-        <ul>
-          <li *ngFor="let post of posts; let i = index"> 
-              <div class="card mb-2" style="width: 18rem;">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.body }}</p>
-                    <button class="btn btn-outline-primary btn-block" (click)="verComments( post.id )"> ver comentarios</button>
-                  </div>
-                </div>
-          </li>
-        </ul>
+        <div class="card-columns">
+          <div *ngFor="let post of posts; let i = index"
+              class="card mb-2">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.body }}</p>
+                <button class="btn btn-outline-primary btn-block" (click)="verComments( post.id )"> ver comentarios</button>
+              </div>
+            </div>
+
+        </div>
       </div>
 
-      <div class="col" *ngIf="comments.length > 0">
+      <div class="col-4" *ngIf="comments.length > 0">
         <h4>Comentario del post {{ comments[i].postId }}</h4>
         <hr>
           <ul>

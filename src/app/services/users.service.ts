@@ -11,6 +11,8 @@ export class UsersService {
 
   userAlbums: any = [];
 
+  albumPhotos: any = [];
+
   constructor(public http: HttpClient) {
 
     console.log( ' Usuarios listos para cargarse ' );
@@ -56,6 +58,23 @@ export class UsersService {
 
                   });
 
+   }
+
+
+   getPhotos( albumID: number ) {
+     const url = `https://jsonplaceholder.typicode.com/photos/`;
+
+     return this.http.get(url)
+                 .map( respuesta => {
+                  for ( let photo of respuesta ) {
+
+                    if ( photo.albumId == albumID ) {
+                      this.albumPhotos.push(photo);
+
+                    }
+                  }
+                  return this.albumPhotos;
+                 });
    }
 
 }

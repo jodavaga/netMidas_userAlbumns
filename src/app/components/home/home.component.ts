@@ -21,7 +21,7 @@ export class HomeComponent {
   this._users.getUsuarios()
             .subscribe( data => {
               this.usuarios = data;
-              console.log(this.usuarios);
+              //console.log(this.usuarios);
             });
   }
 

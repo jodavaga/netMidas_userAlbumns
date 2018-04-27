@@ -39,6 +39,10 @@ export class UsersService {
               });
    }
 
+   borrarUser( idx: number) {
+     this.users.splice(idx, 1);
+   }
+
    getAlbums( userID: number ) {
 
     const url = `https://jsonplaceholder.typicode.com/albums`;

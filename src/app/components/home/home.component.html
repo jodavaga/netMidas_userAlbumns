@@ -1,14 +1,11 @@
 <div class="container mt-5">
-  <h2>Listado de Usuarios</h2>
-  <hr>
-
-  <ul class="list-group">
-    <li *ngFor="let user of usuarios" class="list-group-item">
-      <span class="btn btn-outline btn-block text-left">{{ user.name }} 
-          <i (click)="verUsuario( user.id )" 
-            class="fa fa-edit float-right btn btn-info"></i>
-          <i (click)="verUsuario( user.id )" class="fa fa-trash-alt float-right btn btn-danger"></i>
-      </span>
-    </li>
-  </ul>
+  <div class="jumbotron">
+    <h1 class="display-4">Hello, NetMidas!</h1>
+    <p class="lead">Jose D. Vasquez - Frontend Developer</p>
+    <hr class="my-4">
+    <p>Visualizacion de usuarios. lectura de API con respectivos post y comentarios</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" [routerLink]="['users']" role="button">Siguiente</a>
+    </p>
+  </div>
 </div>

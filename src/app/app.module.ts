@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DetalleComponent } from './components/detalle/detalle.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { UsersComponent } from './components/users/users.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { DetalleComponent } from './components/detalle/detalle.component';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    DetalleComponent
+    DetalleComponent,
+    PostsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

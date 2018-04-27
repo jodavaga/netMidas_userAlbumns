@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalle',
@@ -18,9 +18,9 @@ export class DetalleComponent implements OnInit {
   posts: any = [];
   comments: any = [];
 
-  
   constructor(private _users: UsersService,
-              private activatedRoute: ActivatedRoute
+              private activatedRoute: ActivatedRoute,
+              private router: Router
               ) {
 
 
@@ -46,6 +46,10 @@ export class DetalleComponent implements OnInit {
             this.eraseAlbums();
               this.albums = data;
           });
+  }
+
+  regresar() {
+    this.router.navigate(['users']);
   }
 
   eraseAlbums() {

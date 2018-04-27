@@ -73,7 +73,7 @@
           </ul>
 
         </div>
-        <button (click)="verPosts( user.id )" class="btn btn-primary">Ver Posts</button>
+        <button (click)="verPosts( user.id )" class="btn btn-primary" [routerLink]="['posts']">Ver Posts</button>
       </div>
     </div>
   </div>
@@ -107,5 +107,6 @@
       </div>
     </div>
 
-  <button (click)="eraseAlbums()" [routerLink]="['']" class="btn btn-outline-danger mt-3">Regresar</button>
+  <button (click)="eraseAlbums()" (click)="regresar()" 
+          [routerLink]="['users']" class="btn btn-outline-danger mt-3">Regresar</button>
 </div>

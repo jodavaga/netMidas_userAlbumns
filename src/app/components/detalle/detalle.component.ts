@@ -50,20 +50,20 @@ export class DetalleComponent implements OnInit {
 
   eraseAlbums() {
     console.log('borrando');
-    this._users.userAlbums = [];
+    this.albums = [];
 
   }
   erasePhotos() {
     console.log('borrando');
-    this._users.albumPhotos = [];
+    this.photos = [];
   }
   erasePosts() {
     console.log('borrando posts');
-    this._users.userPosts = [];
+    this.posts = [];
   }
   eraseComments() {
     console.log('borrando comments');
-    this._users.postComments = [];
+    this.comments = [];
   }
 
 // Muestro las fotos del album que se clickeo

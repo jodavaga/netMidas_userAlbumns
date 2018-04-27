@@ -9,14 +9,6 @@ export class UsersService {
   users: any = [];
   usuario: any;
 
-  userAlbums: any = [];
-
-  albumPhotos: any = [];
-
-  userPosts: any = [];
-
-  postComments: any = [];
-
   constructor(public http: HttpClient) {
 
     console.log( ' Usuarios listos para cargarse ' );
@@ -53,14 +45,16 @@ export class UsersService {
 
     return this.http.get(url)
                   .map( respuesta => {
+                    let userAlbums: any = [];
 
-                    for ( let user of respuesta ) {
-
-                      if ( user.userId == userID ) {
-                        this.userAlbums.push(user);
-                      }
-                    }
-                    return this.userAlbums;
+                    Object.keys(respuesta).forEach(function (key) {
+                      let value = respuesta[key];
+                       // do something with key or value
+                       if ( value.userId == userID) {
+                        userAlbums.push(value);
+                       }
+                    });
+                    return userAlbums;
 
                   });
    }
@@ -70,14 +64,15 @@ export class UsersService {
 
      return this.http.get(url)
                  .map( respuesta => {
-                  for ( let photo of respuesta ) {
+                  let albumPhotos: any = [];
 
-                    if ( photo.albumId == albumID ) {
-                      this.albumPhotos.push(photo);
-
-                    }
-                  }
-                  return this.albumPhotos;
+                  Object.keys(respuesta).forEach(function (key) {
+                    let value = respuesta[key];
+                     if ( value.albumId == albumID) {
+                      albumPhotos.push(value);
+                     }
+                  });
+                  return albumPhotos;
                  });
    }
 
@@ -86,14 +81,16 @@ export class UsersService {
 
     return this.http.get(url)
                 .map( respuesta => {
+                  let userPosts: any = [];
 
-                  for (let post of respuesta ) {
-                    if (post.userId == userID ) {
-                      this.userPosts.push(post);
-                    }
-                  }
+                  Object.keys(respuesta).forEach(function (key) {
+                    let value = respuesta[key];
+                     if ( value.userId == userID) {
+                      userPosts.push(value);
+                     }
+                  });
 
-                  return this.userPosts;
+                  return userPosts;
                 });
    }
 
@@ -102,12 +99,22 @@ export class UsersService {
 
     return this.http.get(url)
                   .map( respuesta => {
-                    for (let comment of respuesta ) {
-                      if (comment.postId == postID ) {
-                        this.postComments.push(comment);
-                      }
-                    }
-                    return this.postComments;
+                    let postComments: any = [];
+
+                    Object.keys(respuesta).forEach(function (key) {
+                      let value = respuesta[key];
+                       if ( value.postId == postID) {
+                        postComments.push(value);
+                       }
+                    });
+
+
+                    // for (let comment of respuesta ) {
+                    //   if (comment.postId == postID ) {
+                    //     this.postComments.push(comment);
+                    //   }
+                    // }
+                    return postComments;
 
                   });
    }

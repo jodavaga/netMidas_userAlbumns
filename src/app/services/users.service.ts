@@ -21,7 +21,7 @@ export class UsersService {
     return this.http.get(url)
             .map( (respuesta: any) => {
               this.users = respuesta;
-              console.log(this.users);
+              //console.log(this.users);
               return this.users;
             });
    }
@@ -34,13 +34,14 @@ export class UsersService {
     return this.http.get(url)
               .map( respuesta => {
                 this.usuario = respuesta;
-                console.log(respuesta);
+                //console.log(respuesta);
                 return this.usuario;
               });
    }
 
    borrarUser( idx: number) {
-     this.users.splice(idx, 1);
+      this.users.splice(idx, 1);
+
    }
 
    getAlbums( userID: number ) {

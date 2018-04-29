@@ -1,0 +1,35 @@
+
+<div class="row mt-3">
+    <div class="col-8" *ngIf="posts.length > 0">
+        <h4>Posts del autor</h4>
+        <hr>
+        <div class="card-columns">
+            <div *ngFor="let post of posts; let i = index" class="card mb-2">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.body }}</p>
+                    <button class="btn btn-outline-primary btn-block" (click)="verComments( post.id )"> ver comentarios</button>
+                    <button class="btn btn-danger text-center mt-3" (click)="deletePost( i )"> <i class="fa fa-trash-alt"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-4" *ngIf="comments.length > 0">
+        <h4>Comentario del post #{{ postId }}</h4>
+        <hr>
+        <ul>
+            <li *ngFor="let comment of comments">
+                <h5> {{ comment.email }} </h5>
+                <p> {{ comment.body }} </p>
+            </li>
+        </ul>
+
+        <!-- Regresar -->
+<button (click)="erasePosts()" (click)="regresar(userId)" [routerLink]="['users']" class="btn btn-outline-danger mt-3 float-right">Regresar</button>
+    </div>
+
+
+</div>

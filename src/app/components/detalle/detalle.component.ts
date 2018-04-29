@@ -15,8 +15,6 @@ export class DetalleComponent implements OnInit {
 
   albums: any = [];
   photos: any = [];
-  posts: any = [];
-  comments: any = [];
 
   constructor(private _users: UsersService,
               private activatedRoute: ActivatedRoute,
@@ -61,14 +59,6 @@ export class DetalleComponent implements OnInit {
     console.log('borrando');
     this.photos = [];
   }
-  erasePosts() {
-    console.log('borrando posts');
-    this.posts = [];
-  }
-  eraseComments() {
-    console.log('borrando comments');
-    this.comments = [];
-  }
 
 // Muestro las fotos del album que se clickeo
   verPhotos ( id: number ) {
@@ -81,27 +71,6 @@ export class DetalleComponent implements OnInit {
       //console.log(data);
     });
 
-  }
-
-  verPosts( id: number ) {
-
-    this._users.getPosts( id )
-            .subscribe( data => {
-              this.erasePosts();
-              this.posts = data;
-
-              //console.log(this.posts);
-            });
-  }
-
-  verComments( id: number ) {
-    this._users.getComments( id )
-            .subscribe( data => {
-              this.eraseComments();
-              this.comments = data;
-
-
-            });
   }
 
 }
